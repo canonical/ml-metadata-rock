@@ -1,4 +1,4 @@
-# Based on: https://github.com/google/ml-metadata/blob/v1.14.0/ml_metadata/tools/docker_server/Dockerfile
+# Based on: https://github.com/google/ml-metadata/blob/v1.17.1/ml_metadata/tools/docker_server/Dockerfile
 name: ml-metadata
 summary: Part of the ML Metadata (MLMD) framework.
 description: |
@@ -33,7 +33,6 @@ parts:
       - cmake
       - make
       - musl-dev
-      - ca-certificates
       - openssl
       - curl
       - unzip
@@ -44,6 +43,8 @@ parts:
       - python3-dev
     stage-packages:
       - tzdata
+    overlay-packages:
+      - ca-certificates
     build-environment:
       - BAZEL_VERSION: 6.5.0
     override-build: |
